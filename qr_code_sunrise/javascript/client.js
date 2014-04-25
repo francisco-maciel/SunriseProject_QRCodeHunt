@@ -7,7 +7,7 @@ var Comet = function (data_url) {
     this.url = data_url;
     this.noerror = true;
     this.count = 0;
-    this.connect = function() {
+    this.connect = function() {s
         var self = this;
 
         $.ajax({
@@ -21,12 +21,9 @@ var Comet = function (data_url) {
                 self.noerror = true;
             },
             complete : function(response) {
-                // send a new ajax request when this request is finished
                 if (!self.noerror) {
-                    // if a connection problem occurs, try to reconnect each 5 seconds
                     setTimeout(function(){ comet.connect(); }, 5000);
                 }else {
-                    // persistent connection
                     self.connect();
                 }
 
