@@ -7,7 +7,10 @@ var Comet = function (data_url) {
     this.url = data_url;
     this.noerror = true;
     this.count = 0;
-    this.connect = function() {s
+    this.first = true;
+    this.currentKey = null;
+    this.jsonPath = "./mapping.json";
+    this.connect = function() {
         var self = this;
 
         $.ajax({
@@ -35,15 +38,39 @@ var Comet = function (data_url) {
     this.disconnect = function() {}
 
     this.handleResponse = function(response) {
-        $('#content').append('<div>' + response.msg + '</div>');
-        $('#count').text("QR Codes found: " + ++this.count);
+
+        if (typeof response.id != 'undefined') {
+            var key = response.id;
+            var obj = this;
+            if (this.first == true) {
+                this.first = false;
+            }
+            else {
+            $.getJSON(this.jsonPath, function(data) {
+
+                if (typeof data[key] != 'undefined') {
+
+                    updateCount(++obj.count);
+
+                    if (key != obj.currentKey || typeof obj.currentKey == 'undefined') {
+                        obj.currentKey = key;
+                        updateCanvas(data[key]);
+                    }
+            }
+
+            });
+            }
+
+
+
+        }
     }
 
     this.doRequest = function(request) {
         $.ajax({
             type : 'get',
             url : this.url,
-            data : {'msg' : request}
+            data : {'id' : request}
         });
     }
 
@@ -51,3 +78,22 @@ var Comet = function (data_url) {
 
 var comet = new Comet('./backend.php');
 comet.connect();
+
+
+function updateCount(count) {
+    $('#count').text("QR Codes found: " + count);
+}
+
+function updateCanvas(content) {
+    $('#content').append('<div>' + content.value + '</div>');
+
+
+    var canvas=document.getElementById("myCanvas");
+    var ctx=canvas.getContext("2d");
+    var img=new Image();
+    img.onload = function(){
+        ctx.drawImage(img,0,0);
+    };
+    img.src=content.value;
+
+}

@@ -3,10 +3,10 @@
 $filename  = dirname(__FILE__).'/data.txt';
 
 // store new message in the file
-$msg = isset($_GET['msg']) ? $_GET['msg'] : '';
-if ($msg != '')
+$id = isset($_GET['id']) ? $_GET['id'] : '';
+if ($id != '')
 {
-  file_put_contents($filename,$msg);
+  file_put_contents($filename,$id);
   die();
 }
 
@@ -22,7 +22,7 @@ while ($currentmodif <= $lastmodif) // check if the data file has been modified
 
 // return a json array
 $response = array();
-$response['msg']       = file_get_contents($filename);
+$response['id']       = file_get_contents($filename);
 $response['timestamp'] = $currentmodif;
 echo json_encode($response);
 flush();
