@@ -1,7 +1,7 @@
 /**
  * Created by Francisco on 22/04/2014.
  */
-
+$(document).ready(function() {
 var Comet = function (data_url) {
     this.timestamp = 0;
     this.url = data_url;
@@ -47,7 +47,6 @@ var Comet = function (data_url) {
             }
             else {
             $.getJSON(this.jsonPath, function(data) {
-
                 if (typeof data[key] != 'undefined') {
 
                     updateCount(++obj.count);
@@ -60,9 +59,6 @@ var Comet = function (data_url) {
 
             });
             }
-
-
-
         }
     }
 
@@ -78,6 +74,10 @@ var Comet = function (data_url) {
 
 var comet = new Comet('./backend.php');
 comet.connect();
+    $('.content:hidden:first').fadeIn();
+
+
+});
 
 
 function updateCount(count) {
@@ -85,15 +85,17 @@ function updateCount(count) {
 }
 
 function updateCanvas(content) {
-    $('#content').append('<div>' + content.value + '</div>');
+    //$('#content').append('<div>' + content.value + '</div>'); // testing
+
+    if (content.type == 'image') {
+        $('.elements').append('<div class="content" style="display: none"><img  width="1130" height="636" style="margin-left: auto;margin-right: auto;display: block; min-height:636px; max-height:636px; width:auto;" src="'+ content.value +'" id="imageID" /></div> ');
+
+        $('.content:visible:first').fadeOut(100, function() {
+            $(this).next('.content:hidden').fadeIn();
+        });
+    }
+    else if (content.type == 'video') {
 
 
-    var canvas=document.getElementById("myCanvas");
-    var ctx=canvas.getContext("2d");
-    var img=new Image();
-    img.onload = function(){
-        ctx.drawImage(img,0,0);
-    };
-    img.src=content.value;
-
+    }
 }

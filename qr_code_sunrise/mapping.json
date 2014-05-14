@@ -2,5 +2,9 @@
   "1": {
       "type": "image",
       "value": "./images/test.png"
+    },
+    "2": {
+        "type": "image",
+        "value": "./images/test2.png"
     }
 }
