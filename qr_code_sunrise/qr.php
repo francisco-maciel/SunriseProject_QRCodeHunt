@@ -17,11 +17,9 @@ if ( isset($_GET['id']))
        else $modify = false;
 
    }
-    if (!$equal_content) $message = 'Parabéns, encontraste um código! Podes ver agora o conteúdo projetado!';
+   $message = 'Parabéns, encontraste um código! Podes ver agora o conteúdo projetado!';
 
     if ($modify) file_put_contents($filename,$_GET['id']);
-
-    if ($equal_content) $message = 'Parabéns, econtraste um código! Este já era o código que se encontrava visível!';
 
     success($message);
     die();
