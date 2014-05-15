@@ -4,8 +4,8 @@
       "value": "./images/1.png"
     },
     "c81e728d9d4c2f636f067f89cc14862c": {
-        "type": "image",
-        "value": "./images/2.jpg"
+        "type": "video",
+        "value": "xsMPHUV11PM"
     },
     "eccbc87e4b5ce2fe28308fd9f2a7baf3": {
         "type": "video",
@@ -21,7 +21,7 @@
     },
 	"1679091c5a880faf6fb5e6087eb1b2dc": {
         "type": "image",
-        "value": "./images/6.jpg"
+        "value": "./images/6.png"
     },
 	"8f14e45fceea167a5a36dedd4bea2543": {
 	"type": "video",
@@ -35,7 +35,7 @@
 	"type": "image",
 	"value": "./images/9.jpg"
     },
-	"31d30eea8d0968d6458e0ad0027c9f80": {
+	"d3d9446802a44259755d38e6d163e820": {
 	"type": "image",
 	"value": "./images/10.jpg"
     }
