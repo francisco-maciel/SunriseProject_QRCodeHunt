@@ -6,9 +6,9 @@ if ( isset($_GET['id']))
 {
 
     $filetime = filemtime($filename);
+    $modify = true;
 
    if (strcmp($_GET['id'], file_get_contents($filename)) == 0) {
-       $modify;
        if(time() - $filetime > 5) {
            $modify = true;
        }

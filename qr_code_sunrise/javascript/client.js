@@ -81,12 +81,12 @@ comet.connect();
 
 
 function updateCount(count) {
-    $('#count').text("QR Codes found: " + count);
+    $('#count').html("Códigos QR<br/> encontrados: " + count);
 }
 
 function updateCanvas(content) {
     //$('#content').append('<div>' + content.value + '</div>'); // testing
-
+    $('iframe').remove();
     if (content.type == 'image') {
         $('.elements').append('<div class="content" style="display: none"><img  width="1130" height="636" style="margin-left: auto;margin-right: auto;display: block; min-height:636px; max-height:636px; width:auto;" src="'+ content.value +'" id="imageID" /></div> ');
 
@@ -95,7 +95,11 @@ function updateCanvas(content) {
         });
     }
     else if (content.type == 'video') {
+        $('.elements').append('<div class="content" style="display: none"></div>');
+        $('.content:hidden:last').show();
 
-
+            console.log($('.content:hidden:last'));
+            $('.content:visible:last').append('<iframe style="margin-left: auto;margin-right: auto;display: block; " width="1130" height="636" src="http://www.youtube.com/embed/'+ content.value+'?autoplay=1&loop=1&playlist='+content.value+'" frameborder="0" allowfullscreen></iframe>');
+            $('.content:visible:first').hide();
     }
 }
