@@ -87,6 +87,7 @@ function updateCount(count) {
 function updateCanvas(content) {
     //$('#content').append('<div>' + content.value + '</div>'); // testing
     $('iframe').remove();
+    $()
     if (content.type == 'image') {
         $('.elements').append('<div class="content" style="display: none"><img  width="1130" height="636" style="margin-left: auto;margin-right: auto;display: block; min-height:636px; max-height:636px; width:auto;" src="'+ content.value +'" id="imageID" /></div> ');
 

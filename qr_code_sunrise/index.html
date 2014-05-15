@@ -19,15 +19,33 @@
              height: 132px;
              z-index:-1;
          }
+         #footer {
+
+             position: fixed;
+
+             /* set position */
+             bottom: 2px;
+             right: 2px;
+
+             /* must have dimension */
+             width: 1000px;
+             height: 20px;
+             z-index:2;
+             text-align: right;
+             font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+             color: #424242;
+         }
      </style>
 
   </head>
   <body>
-<h2 style='font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif; color:#424242'><div id="count">Códigos QR <br/> encontrados: 0</div></h2>
+<h2 style='font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color:#424242'><div id="count">Códigos QR <br/> encontrados: 0</div></h2>
 <div id="content">
 </div>
 
 <div id="logo"> <img  width="168" height="132" src="images/logo.jpg" /></div>
+<div id="footer">Created  by Francisco Maciel: <a href="https://github.com/francisco-maciel/sunrise-qr-hunt" style="color: #4183c4; text-decoration: none">source code</a> </div>
+
 <!-- <canvas id="myCanvas" width="500" height="500"></canvas> -->
 
 
